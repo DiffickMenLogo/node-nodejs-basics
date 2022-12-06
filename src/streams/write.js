@@ -1,7 +1,10 @@
 import { createWriteStream } from "fs";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+const _dirname = dirname(fileURLToPath(import.meta.url)) + "/";
 
 const write = async () => {
-  const writeStream = createWriteStream("files/fileToWrite.txt");
+  const writeStream = createWriteStream(_dirname + "files/fileToWrite.txt");
   writeStream.on("error", (err) => {
     console.log(err);
   });
